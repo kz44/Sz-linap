@@ -131,7 +131,7 @@ button:hover {
 <div id="content"></div>
 
 <script>
-const MODULE_HOUR = 22;
+const MODULE_HOUR = 21;
 
 const modules = {
   "28": `
@@ -193,16 +193,49 @@ document.getElementById("check").onclick = checkDate;
 document.addEventListener("keypress", e => { if(e.key === "Enter") checkDate(); });
 
 function checkDate() {
-  const d = day.value;
+  const now = new Date();
+
+  const inputYear  = parseInt(year.value);
+  const inputMonth = parseInt(month.value) - 1; // JS-ben 0-indexelt
+  const inputDay   = parseInt(day.value);
+
   document.getElementById("error").innerText = "";
-  if(!modules[d]) {
-    document.getElementById("error").innerText = "❌ Rossz dátum, válassz másikat!";
-    content.innerHTML = "";
+  content.innerHTML = "";
+
+  // aktuális dátum
+  const todayYear  = now.getFullYear();
+  const todayMonth = now.getMonth();
+  const todayDay   = now.getDate();
+  const currentHour = now.getHours();
+
+  // dátumellenőrzés
+  if (
+    inputYear !== todayYear ||
+    inputMonth !== todayMonth ||
+    inputDay !== todayDay
+  ) {
+    document.getElementById("error").innerText =
+      "❌ Ez az ajándék csak a MAI napon nyitható meg.";
     return;
   }
-  content.innerHTML = modules[d];
-}
 
+  // időellenőrzés
+  if (currentHour < MODULE_HOUR) {
+    document.getElementById("error").innerText =
+      "⏳ Az ajándék ma este 21:00 után válik elérhetővé.";
+    return;
+  }
+
+  // van-e modul erre a napra
+  if (!modules[inputDay]) {
+    document.getElementById("error").innerText =
+      "❌ Erre a napra nincs ajándék.";
+    return;
+  }
+
+  // minden OK
+  content.innerHTML = modules[inputDay];
+}
 function showRebus() {
   content.innerHTML = `
     <div class="module finale">
@@ -233,6 +266,5 @@ function showRebus() {
 
 </body>
 </html>
-
 
 
