@@ -116,9 +116,9 @@ button:hover {
 
 <h1>Napi Ajándék 3.nap</h1>
 <p>Kedves Krisztike </p>
-<p>Az ajándék Rébusz lassan összeáll. Ez a már csak 1 napig tart. Csak 23:00 után tudod megnyitni a következő segítséged. A betűkből kell a helyes megfejtést megadnod. Egy hiányzó betű nehezíti a feladatodat. Remélem nem felejtetted el az eddigi betűket.</p>
+<p>Az ajándék Rébusz lassan összeáll. Ez a már csak 1 napig tart. Csak 21:00 után tudod megnyitni a következő segítséged. A betűkből kell a helyes megfejtést megadnod. Egy hiányzó betű nehezíti a feladatodat. Remélem nem felejtetted el az eddigi betűket.</p>
 <p>További kellemes játékot és türelmes várakozást kívánunk: Zoli és Zolika</p>
-<p>Boldog születésnapot! Remélem, idén is olyan hajlékonyan és stílusosan tudod megoldani a dolgokat, mint egy elegáns kis tengerparti kagyló – mindig ott, ahol szükség van rád, és minden érintésed tökéletesen célba talál.</p>
+<p>Boldog születésnapot! Remélem, idén is olyan hajlékonyan és stílusosan tudod megoldani a dolgokat, mint egy elegáns kis tengerparti kagyló – mindig ott, ahol szükség van rád, és minden célba talál az érintéseddel.</p>
 <p>Utóirat: fontos a mindennapi mozgás. Fő a testi lelki egészség. </p>
 
 <p>Add meg a mai dátum:</p>
@@ -136,13 +136,13 @@ button:hover {
 <div id="content"></div>
 
 <script>
-const MODULE_HOUR = 23;
+const MODULE_HOUR = 21;
 
 const modules = {
   "28": `
     <div class="module">
       <p class="blue">
-        A következő betű 23:00 után lesz ismét elérhető. Játékra fel.
+        A következő betű 21:00 után lesz ismét elérhető. Játékra fel.
 	Ezt az ajándékot használni fogod, amikor kreatív energiáid szabadjára lesznek engedve.<br>
         Ahhoz, hogy megkapd az igazi ajándékot, teljesítened kell a következő feladatot: Oldjál meg egy Rébuszt.
       </p><br>
@@ -228,7 +228,7 @@ function checkDate() {
   // időellenőrzés
   if (currentHour < MODULE_HOUR) {
     document.getElementById("error").innerText =
-      "⏳ Az ajándék ma este 23:00 után válik elérhetővé.";
+      "⏳ Az ajándék ma este 21:00 után válik elérhetővé.";
     return;
   }
 
@@ -272,6 +272,7 @@ function showRebus() {
 
 </body>
 </html>
+
 
 
 
